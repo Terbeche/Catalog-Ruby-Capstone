@@ -1,2 +1,2 @@
-def Book
+class Book
 end
