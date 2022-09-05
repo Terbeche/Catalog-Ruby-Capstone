@@ -19,3 +19,4 @@ class Item
 
   attr_writer :id, :archived
 end
+  
