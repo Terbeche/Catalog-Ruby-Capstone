@@ -2,13 +2,13 @@ require_relative '../book'
 
 describe Book do
   before :each do
-    @book = Book.new(1, 'mustapha', 'bad', '2022-09-05', false)
-    @second_book = Book.new(5, 'mustapha', 'good', '2022-09-05', false)
-    @third_book = Book.new(23, 'mustapha', 'good', '2010-06-05', false)
+    @book = Book.new(1, 'mustapha', 'bad', '2022-09-05', false, 'Gift')
+    @second_book = Book.new(5, 'mustapha', 'good', '2022-09-05', false, 'Gift')
+    @third_book = Book.new(23, 'mustapha', 'good', '2010-06-05', false, 'Gift')
   end
 
   describe '#new' do
-    it 'takes 5 parameters and returns a Book object' do
+    it 'takes 6 parameters and returns a Book object' do
       expect(@book).to be_instance_of Book
     end
   end

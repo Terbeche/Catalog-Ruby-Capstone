@@ -8,7 +8,7 @@ module BooksPersistence
 
     books.each do |book|
       data << { id: book.id, publisher: book.publisher, cover_state: book.cover_state, publish_date: book.publish_date,
-                archived: book.archived }
+                archived: book.archived, label: book.title }
     end
     File.write(file, JSON.generate(data))
   end
@@ -19,7 +19,8 @@ module BooksPersistence
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |book|
-      data << Book.new(book['id'], book['publisher'], book['cover_state'], book['publish_date'], book['archived'])
+      data << Book.new(book['id'], book['publisher'], book['cover_state'], book['publish_date'], book['archived'],
+                       book['label'])
     end
 
     data

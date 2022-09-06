@@ -68,33 +68,43 @@ class App
       puts 'Here is the list of books'
       puts
       @books.each_with_index do |book, index|
-        puts "#{index}) Publisher: \"#{book.publisher}\", Publish Date: #{book.publish_date}"
+        print "#{index}) Publisher: \"#{book.publisher}\", Publish Date: \"#{book.publish_date}\","
+        print " Cover state: \"#{book.cover_state}\",  Archived: \"#{book.archived}\" , Label: \"#{book.title}\""
+        puts
       end
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def add_book
     print 'Publisher: '
     publisher = gets.chomp.strip
-    print 'What is the book\'s cover state: '
-    cover_state = gets.chomp.strip
-    print 'Publish_date: '
-    publish_date = gets.chomp.strip
-    print 'Is the book archieved or not? [Y/N]: '
-    archived = gets.chomp.strip.upcase
-    case archived
-    when 'Y'
-      archived = true
-    when 'N'
-      archived = false
+    print 'Is the book\'s cover state good or bad ? [G/B]: '
+    cover_state = gets.chomp.strip.upcase
+    case cover_state
+    when 'G'
+      cover_state = 'good'
+    when 'B'
+      cover_state = 'bad'
     end
+    print 'Enter publish date in [yyyy-mm-dd] format: '
+    publish_date = gets.chomp.strip
     print 'Please give a label name to your book: '
-    title = gets.chomp.strip
-    print 'Please give a label color: '
-    color = gets.chomp.strip
-    @labels.push(Label.new(title, color))
-    @books.push(Book.new(rand(1000), publisher, cover_state, publish_date, archived))
+    title = gets.chomp.strip.upcase
+    print 'Please give a color to your label: '
+    color = gets.chomp.strip.upcase
+    label = Label.new(title, color)
+    book = Book.new(rand(1000), publisher, cover_state, publish_date, false, title)
+
+    book.move_to_archive
+    book.add_label(label)
+    label.add_item(book)
+    @books << book
+    @labels << label
+
+    puts 'Book created successfully'
   end
+  # rubocop:enable Metrics/MethodLength
 
   def list_labels
     if @labels.empty?
@@ -103,7 +113,7 @@ class App
       puts 'Here is the list of labels'
       puts
       @labels.each_with_index do |label, index|
-        puts "#{index}) Label name: \"#{label.title}\""
+        puts "#{index}) \"#{label.title}\""
       end
     end
   end
