@@ -1,19 +1,19 @@
 require 'io/console'
 require_relative 'book'
 require_relative 'label'
-require_relative './book_label/book_access'
-require_relative './book_label/label_access'
+require_relative 'item'
 
-LABEL = LabelAccess.new
-BOOK = BookAccess.new
+require_relative './persist_files/persist_books'
+require_relative './persist_files/persist_labels'
+
 class App
   def initialize
-    # @books = load_books
-    # @labels = load_labels
+    @books = load_books
+    @labels = load_labels
   end
 
-  # include BooksPersistence
-  # include LabelsPersistence
+  include BooksPersistence
+  include LabelsPersistence
 
   def menu
     puts
@@ -32,11 +32,11 @@ class App
   def check(options)
     case options
     when 1
-      BOOK.list_books
+      list_books
     when 2
-      LABEL.list_labels
+      list_labels
     when 3
-      BOOK.add_book
+      add_book
     end
   end
 
@@ -48,18 +48,60 @@ class App
       puts
       print 'Please Choose Your Option [1-4]: '
       choice = gets.chomp.strip.to_i
+      puts
+      puts
       check(choice)
-      wait_continue if choice != 4
+
       puts
       puts
     end
-    # store_books(@books)
-    # store_labels(@labels)
+
+    store_books(@books)
+    store_labels(@labels)
+    puts 'Thank you for using our app !'
   end
 
-  def wait_continue
-    print 'press any key to continue...'
-    $stdin.getch
-    print "             \r"
+  def list_books
+    if @books.empty?
+      puts 'There is no books to display'
+    else
+      puts 'Here is the list of books'
+      puts
+      @books.each_with_index do |book, index|
+        puts "#{index}) Publisher: \"#{book.publisher}\", Publish Date: #{book.publish_date}"
+      end
+    end
+  end
+
+  def add_book
+    puts
+    print 'Publisher: '
+    publisher = gets.chomp.strip
+    print 'What is the book\'s cover state: '
+    cover_state = gets.chomp.strip
+    print 'Publish_date: '
+    publish_date = gets.chomp.strip
+    print 'Is the book archieved or not? [Y/N]: '
+    archived = gets.chomp.strip.upcase
+    case archived
+    when 'Y'
+      archived = true
+    when 'N'
+      archived = false
+    end
+
+    @books.push(Book.new(rand(1000), publisher, cover_state, publish_date, archived))
+  end
+
+  def list_labels
+    if @labels.empty?
+      puts 'There is no labels to display'
+    else
+      puts 'Here is the list of labels'
+      puts
+      @labels.each_with_index do |label, index|
+        puts "#{index}) Label name: \"#{label.label.title}\""
+      end
+    end
   end
 end

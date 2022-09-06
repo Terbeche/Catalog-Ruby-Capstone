@@ -2,9 +2,9 @@ require_relative '../book'
 
 describe Book do
   before :each do
-    @book = Book.new('mustapha', 'bad', 1, '2022-09-05', false)
-    @second_book = Book.new('mustapha', 'good', 5, '2022-09-05', false)
-    @third_book = Book.new('mustapha', 'good', 23, '2010-06-05', false)
+    @book = Book.new(1, 'mustapha', 'bad', '2022-09-05', false)
+    @second_book = Book.new(5, 'mustapha', 'good', '2022-09-05', false)
+    @third_book = Book.new(23, 'mustapha', 'good', '2010-06-05', false)
   end
 
   describe '#new' do
