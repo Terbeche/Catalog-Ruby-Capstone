@@ -27,5 +27,15 @@ module GenresController
     data
   end
 
-  
+  def list_genres
+    puts '-' * 50
+    if @genres.empty?
+      puts 'The genres list is empty'
+    else
+      puts '📑 Genres list:'
+      @genres.each_with_index do |genre, index|
+        puts "#{index + 1}-[Genre] ID: #{genre.id} | Name: #{genre.name}"
+      end
+    end
+  end
 end
