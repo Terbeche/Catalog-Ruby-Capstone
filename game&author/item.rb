@@ -1,5 +1,6 @@
 class Item
   attr_writer :genre, :author, :source, :label
+  attr_reader :id, :archived
 
   def initialize(id, publish_date, archived)
     @id = id
@@ -16,6 +17,4 @@ class Item
   def can_be_archived?
     publish_date > 10
   end
-
-  attr_writer :id, :archived
 end
