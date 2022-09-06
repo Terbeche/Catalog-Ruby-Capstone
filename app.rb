@@ -74,7 +74,6 @@ class App
   end
 
   def add_book
-    puts
     print 'Publisher: '
     publisher = gets.chomp.strip
     print 'What is the book\'s cover state: '
@@ -89,7 +88,11 @@ class App
     when 'N'
       archived = false
     end
-
+    print 'Please give a label name to your book: '
+    title = gets.chomp.strip
+    print 'Please give a label color: '
+    color = gets.chomp.strip
+    @labels.push(Label.new(title, color))
     @books.push(Book.new(rand(1000), publisher, cover_state, publish_date, archived))
   end
 
@@ -100,7 +103,7 @@ class App
       puts 'Here is the list of labels'
       puts
       @labels.each_with_index do |label, index|
-        puts "#{index}) Label name: \"#{label.label.title}\""
+        puts "#{index}) Label name: \"#{label.title}\""
       end
     end
   end

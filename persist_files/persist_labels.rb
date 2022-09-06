@@ -18,7 +18,7 @@ module LabelsPersistence
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |label|
-      data << Book.new(label['title'], label['color'])
+      data << Label.new(label['title'], label['color'])
     end
 
     data
