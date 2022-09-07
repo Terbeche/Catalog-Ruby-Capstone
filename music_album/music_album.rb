@@ -1,5 +1,5 @@
 require 'json'
-require_relative 'item'
+require './item'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify
