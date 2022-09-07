@@ -1,3 +1,5 @@
+require_relative 
+
 class Item
   attr_writer :genre, :author, :source, :label
 
@@ -9,6 +11,11 @@ class Item
 
   def move_to_archive()
     archived = true if can_be_archived? 
+  end
+
+  def add_source(source)
+    @source = source
+    source.add_item(self) unless @source.items.include?(self)
   end
 
   private

@@ -39,5 +39,17 @@ class App
           puts ''
           run_command
         end
+    end
+
+    def add_source
+        print 'Title:'
+        title = gets.chomp
+        print 'Author:'
+        author = gets.chomp
+        book = Book.new(title, author)
+        @my_books.push(book)
+        puts 'Book created successfully'
+        puts ''
+        run_command
       end
 end
