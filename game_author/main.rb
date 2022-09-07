@@ -1,9 +1,13 @@
 require_relative 'list_games_authors'
+require_relative 'add_game'
+require_relative 'author'
 class App
   include ListGameAndAuthor
+  include AddGame
 
   def initialize
     @game = []
+    @items = []
     @author = []
   end
 
@@ -22,11 +26,11 @@ class App
   def run_choise(input)
     case input
     when '1'
-      list_books
+      list_games
     when '2'
-      list_people
+      list_authors
     when '3'
-      create_people
+      add_game
     else
       exit
     end
