@@ -35,5 +35,15 @@ module MusicAlbumsController
     end
   end
 
-  
+  def add_music_album
+    on_spotify = user_input('Is the album on spotify? [true, false]: ')
+    publish_date = user_input("Album\'s publish date: ")
+    genre = Genre.new(user_input("Album\'s genre: "))
+    new_music_album = MusicAlbum.new(on_spotify, publish_date)
+    new_music_album.genre = genre
+    new_music_album.move_to_archive
+    save_music_album(new_music_album)
+    @genres << genre
+    puts 'The music album has been created successfully ✅'
+  end
 end
