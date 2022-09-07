@@ -10,7 +10,7 @@ module BookModule
       puts
       @books.each_with_index do |book, index|
         print "#{index}) Publisher: \"#{book.publisher}\", Publish Date: \"#{book.publish_date}\","
-        print " Cover state: \"#{book.cover_state}\",  Archived: \"#{book.archived}\" , Label: \"#{book.title}\""
+        print " Cover state: \"#{book.cover_state}\",  Archived: \"#{book.archived}\" , Label: \"#{book.label}\""
         puts
       end
     end
@@ -31,17 +31,15 @@ module BookModule
     print 'Enter publish date in [yyyy-mm-dd] format: '
     publish_date = gets.chomp.strip
     print 'Please give a label name to your book: '
-    title = gets.chomp.strip.upcase
+    label = gets.chomp.strip.upcase
     print 'Please give a color to your label: '
     color = gets.chomp.strip.upcase
-    label = Label.new(title, color)
-    book = Book.new(rand(1000), publisher, cover_state, publish_date, false, title)
+    new_label = Label.new(label, color)
+    book = Book.new(rand(1000), publisher, cover_state, publish_date, false, label)
 
     book.move_to_archive
-    book.add_label(label)
-    label.add_item(book)
     @books << book
-    @labels << label
+    @labels << new_label
 
     puts 'Book created successfully'
   end
