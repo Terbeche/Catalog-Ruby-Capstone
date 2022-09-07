@@ -1,7 +1,7 @@
 require_relative 'item'
 
 class Book < Item
-  attr_accessor :publisher, :cover_state
+  attr_accessor :publisher, :cover_state, :label_name
   attr_reader :id, :publish_date, :archived
 
   # rubocop:disable Metrics/ParameterLists
@@ -9,7 +9,7 @@ class Book < Item
     super(id, publish_date, archived)
     @publisher = publisher
     @cover_state = cover_state
-    @label = label
+    @label_name = label
   end
   # rubocop:enable Metrics/ParameterLists
 

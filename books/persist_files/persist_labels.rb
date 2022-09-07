@@ -1,5 +1,4 @@
 require 'json'
-
 module LabelsPersistence
   def store_labels(labels)
     data = []
@@ -20,7 +19,6 @@ module LabelsPersistence
     JSON.parse(File.read(file)).each do |label|
       data << Label.new(label['title'], label['color'])
     end
-
     data
   end
 end

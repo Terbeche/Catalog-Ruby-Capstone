@@ -8,7 +8,7 @@ module BooksPersistence
 
     books.each do |book|
       data << { id: book.id, publisher: book.publisher, cover_state: book.cover_state, publish_date: book.publish_date,
-                archived: book.archived, label: book.label }
+                archived: book.archived, label: book.label_name }
     end
     File.write(file, JSON.generate(data))
   end
