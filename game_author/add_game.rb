@@ -39,10 +39,10 @@ module AddGame
     create_author(first_name, last_name)
     new_author = first_name + ' ' + last_name
     new_game = Game.new(multiplayer, last_played_at, publish_date, archived, new_author)
-    save_to_json(new_game)
+    save_game_to_json(new_game)
   end
 
-  def save_to_json(game)
+  def save_game_to_json(game)
     @game << { 'publish_date' => game.publish_date,
                'last_played_at' => game.last_played_at,
                'archived' => game.archived,
@@ -54,6 +54,12 @@ module AddGame
 
   def create_author(first_name, last_name)
     new_author = Author.new(first_name, last_name)
-    @author << new_author
+    save_author_to_json(new_author)
+  end
+  def save_author_to_json(author)
+    @author << { 'first_name' => author.first_name,
+               'last_name' => author.last_name }
+
+    save_author(@author)
   end
 end

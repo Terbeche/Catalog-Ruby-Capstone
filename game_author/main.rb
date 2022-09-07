@@ -13,7 +13,7 @@ class App
   def initialize
     @game = load_games
     @items = []
-    @author = []
+    @author = load_authors
   end
 
   def options
