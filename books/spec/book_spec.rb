@@ -2,9 +2,11 @@ require_relative '../book'
 
 describe Book do
   before :each do
+    @label = Label.new('new', 'red')
     @book = Book.new(1, 'mustapha', 'bad', '2022-09-05', false, 'Gift')
     @second_book = Book.new(5, 'mustapha', 'good', '2022-09-05', false, 'Gift')
     @third_book = Book.new(23, 'mustapha', 'good', '2010-06-05', false, 'Gift')
+    @book.add_label(@label)
   end
 
   describe '#new' do
@@ -24,6 +26,12 @@ describe Book do
 
     it 'should return true if published_date is older than 10 years' do
       expect(@third_book.can_be_archived?).to eql true
+    end
+  end
+
+  describe '#add_label' do
+    it 'should add label to item ' do
+      expect(@book.label.items.length).to eql 1
     end
   end
 end

@@ -3,7 +3,7 @@ require_relative '../item'
 
 describe Label do
   before :each do
-    @label = Label.new('drama', 'red')
+    @label = Label.new('gift', 'red')
     @item = Item.new(27, '2021-07-12', false)
     @label.add_item(@item)
   end
