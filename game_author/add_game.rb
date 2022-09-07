@@ -56,9 +56,10 @@ module AddGame
     new_author = Author.new(first_name, last_name)
     save_author_to_json(new_author)
   end
+
   def save_author_to_json(author)
     @author << { 'first_name' => author.first_name,
-               'last_name' => author.last_name }
+                 'last_name' => author.last_name }
 
     save_author(@author)
   end
