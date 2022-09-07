@@ -1,12 +1,17 @@
 require_relative 'list_games_authors'
 require_relative 'add_game'
 require_relative 'author'
+require_relative 'load_data'
+require_relative 'save_data'
+
 class App
   include ListGameAndAuthor
   include AddGame
+  include LoadData
+  include SaveData
 
   def initialize
-    @game = []
+    @game = load_games
     @items = []
     @author = []
   end

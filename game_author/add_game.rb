@@ -1,13 +1,14 @@
 require_relative 'game'
+require_relative 'save_data'
 
 module AddGame
- def add_game
+  include SaveData
+  def add_game
     print 'published Date: '
     published_date = gets.chomp.to_i
 
     print 'is Archived [Y/N]: '
     archived = ''
-
     case gets.chomp.downcase
     when 'y'
       archived = true
@@ -24,34 +25,35 @@ module AddGame
     print 'last played at: '
     last_played_at = gets.chomp.to_i
 
-    create_game(published_date, archived, multiplayer, last_played_at)
-    # final_add(published_date, archived)
-    run
- end
+    print 'Author First Name: '
+    first_name = gets.chomp
 
- def create_game(publish_date,archived,multiplayer, last_played_at)
-    new_game = Game.new(publish_date, multiplayer, last_played_at, archived)
-    @game << new_game
- end
- def final_add(published_date, archived)
-    puts 'Authors'
-    puts '0. Create new'
-    @items.each_with_index do |author, i|
-        puts "#{i + 1}. #{author.first_name} #{author.last_name}"
-    end
-    choice = ''
-    
-    case gets.chomp.to_i
-    when  0
-    print 'First name: '
-    fn = gets.chomp
+    print 'Author Last Name: '
+    last_name = gets.chomp
 
-    print 'last name: '
-    fl = gets.chomp
-    new_author = Author.new(fn,fl)
-    new_item = Item.new(publish_date,archived,new_author)
+    create_game(published_date, archived, multiplayer, last_played_at, first_name, last_name)
     run
-    end 
-    
- end
+  end
+
+  def create_game(publish_date, archived, multiplayer, last_played_at, first_name, last_name)
+    create_author(first_name, last_name)
+    new_author = first_name + ' ' + last_name
+    new_game = Game.new(multiplayer, last_played_at, publish_date, archived, new_author)
+    save_to_json(new_game)
+  end
+
+  def save_to_json(game)
+    @game << { 'publish_date' => game.publish_date,
+               'last_played_at' => game.last_played_at,
+               'archived' => game.archived,
+               'author' => game.author,
+               'multiplayer' => game.multiplayer }
+
+    save_game(@game)
+  end
+
+  def create_author(first_name, last_name)
+    new_author = Author.new(first_name, last_name)
+    @author << new_author
+  end
 end

@@ -1,12 +1,11 @@
 class Item
-  attr_writer :genre, :author, :source, :label
-  attr_reader :id, :archived
+  attr_writer :genre, :source, :label
+  attr_reader :id, :archived, :publish_date
 
-  def initialize(publish_date, archived, author)
+  def initialize(publish_date, archived)
     @id = Random.rand(1..1000)
     @archived = archived
     @publish_date = publish_date
-    @author = author
   end
 
   def move_to_archive()
@@ -14,6 +13,7 @@ class Item
   end
 
   def author=(author)
+    @author = author
     author.items.push(self)
   end
 
