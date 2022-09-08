@@ -10,5 +10,8 @@ create table Game (
     multiplayer varchar(100),
     last_played_at date,
     published_date date,
-    archived boolean
+    archived boolean,
+    author_id  INT,
+    CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES Author (id) ON DELETE CASCADE,
+    PRIMARY KEY(id)
 )
