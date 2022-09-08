@@ -25,17 +25,17 @@ module AddGame
     print 'last played at: '
     last_played_at = gets.chomp.to_i
 
+    create_game(published_date, archived, multiplayer, last_played_at)
+    run
+  end
+
+  def create_game(publish_date, archived, multiplayer, last_played_at)
     print 'Author First Name: '
     first_name = gets.chomp
 
     print 'Author Last Name: '
     last_name = gets.chomp
 
-    create_game(published_date, archived, multiplayer, last_played_at, first_name, last_name)
-    run
-  end
-
-  def create_game(publish_date, archived, multiplayer, last_played_at, first_name, last_name)
     create_author(first_name, last_name)
     new_author = ''
     new_author.concat(first_name)
