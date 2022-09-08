@@ -16,7 +16,7 @@ module LabelsPersistence
     puts "load labels"
 
     data = []
-    file = './JSON_files/labels.json'
+    file = '../JSON_files/labels.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |label|

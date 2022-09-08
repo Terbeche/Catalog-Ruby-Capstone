@@ -13,6 +13,12 @@ require_relative 'books/persist_files/persist_labels'
 require_relative 'books/modules/label_module'
 require_relative 'books/modules/book_module'
 
+require_relative 'game_author/list_games_authors'
+require_relative 'game_author/add_game'
+require_relative 'game_author/author'
+require_relative 'game_author/load_data'
+require_relative 'game_author/save_data'
+
 class Main
   include MusicAlbumsController
   include GenresController
@@ -20,11 +26,17 @@ class Main
   include LabelsPersistence
   include BookModule
   include LabelModule
+  include ListGameAndAuthor
+  include AddGame
+  include LoadData
+  include SaveData
 
   def initialize
     @genres = load_genres
     @books = load_books
     @labels = load_labels
+    @game = load_games
+    @author = load_authors
   end
 
   def user_input(message)
