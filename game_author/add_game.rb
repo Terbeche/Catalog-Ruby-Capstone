@@ -26,7 +26,6 @@ module AddGame
     last_played_at = gets.chomp.to_i
 
     create_game(published_date, archived, multiplayer, last_played_at)
-    run
   end
 
   def create_game(publish_date, archived, multiplayer, last_played_at)

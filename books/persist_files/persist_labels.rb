@@ -1,9 +1,8 @@
 require 'json'
 module LabelsPersistence
   def store_labels(labels)
-    puts "store labels"
     data = []
-    file = './JSON_files/labels.json'
+    file = 'books/JSON_files/labels.json'
     return unless File.exist?(file)
 
     labels.each do |label|
@@ -13,10 +12,8 @@ module LabelsPersistence
   end
 
   def load_labels
-    puts "load labels"
-
     data = []
-    file = './JSON_files/labels.json'
+    file = 'books/JSON_files/labels.json'
     return data unless File.exist?(file) && File.read(file) != ''
 
     JSON.parse(File.read(file)).each do |label|

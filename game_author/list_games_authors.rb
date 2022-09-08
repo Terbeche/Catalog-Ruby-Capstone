@@ -7,7 +7,6 @@ module ListGameAndAuthor
     end
 
     puts ''
-    run
   end
 
   def list_games
@@ -19,6 +18,5 @@ module ListGameAndAuthor
     end
 
     puts ''
-    run
   end
 end

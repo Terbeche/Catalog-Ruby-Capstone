@@ -17,6 +17,11 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
+  def add_source(source)
+    @source = source
+    source.items << self unless source.items.include?(self)
+  end
+
   def author=(author)
     @author = author
     author.items.push(self)
@@ -25,11 +30,6 @@ class Item
   def genre=(genre)
     @genre = genre.name
     genre.items << self unless genre.items.include?(self)
-  end
-
-  def source=(source)
-    @source = source.name
-    source.items << self unless source.items.include?(self)
   end
 
   private

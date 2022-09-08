@@ -1,4 +1,4 @@
-require_relative '../author'
+require './game_author/author'
 
 describe Author do
   author = Author.new('Natnael', 'Demelash')
