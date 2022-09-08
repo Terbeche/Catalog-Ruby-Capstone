@@ -4,7 +4,6 @@ describe Game do
   before :each do
     @game = Game.new(2, '2022-09-05', '2022-09-05', false, 'Natnael Demelash')
   end
-  author = Author.new('Natnael', 'Demelash')
   it 'returns the correct last played at' do
     expect(@game.last_played_at).to eq '2022-09-05'
   end

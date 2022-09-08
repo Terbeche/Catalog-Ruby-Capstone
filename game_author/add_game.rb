@@ -37,7 +37,10 @@ module AddGame
 
   def create_game(publish_date, archived, multiplayer, last_played_at, first_name, last_name)
     create_author(first_name, last_name)
-    new_author = first_name + ' ' + last_name
+    new_author = ''
+    new_author.concat(first_name)
+    new_author.concat(' ')
+    new_author.concat(last_name)
     new_game = Game.new(multiplayer, last_played_at, publish_date, archived, new_author)
     save_game_to_json(new_game)
   end
