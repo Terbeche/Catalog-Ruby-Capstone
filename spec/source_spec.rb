@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require_relative '../source'
 require_relative '../item'
 describe Source do

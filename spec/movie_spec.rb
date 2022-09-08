@@ -1,11 +1,10 @@
-# frozen_string_literal: true
 require_relative '../movie'
 describe Movie do
   before :each do
     @source = Source.new('new')
     @movie = Movie.new(1, 'krish', true, '2022-09-05', false, 'Gift')
-    @second_movie = Movie.new(5, 'mr.bean',  false, '2022-09-05', false, 'Gift')
-    @third_movie = Movie.new(23, 'Snitch' , false, '2010-06-05', false, 'Gift')
+    @second_movie = Movie.new(5, 'mr.bean', false, '2022-09-05', false, 'Gift')
+    @third_movie = Movie.new(23, 'Snitch', false, '2010-06-05', false, 'Gift')
     @movie.add_source(@source)
   end
   describe '#new' do

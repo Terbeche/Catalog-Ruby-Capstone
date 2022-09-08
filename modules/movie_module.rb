@@ -16,7 +16,6 @@ module SourceModule
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   def add_movie
     print 'name: '
     name = gets.chomp.strip
@@ -59,5 +58,4 @@ module SourceModule
     end
     puts 'movie created successfully'
   end
-  # rubocop:enable Metrics/MethodLength
 end
