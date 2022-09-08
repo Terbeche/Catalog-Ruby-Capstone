@@ -35,9 +35,9 @@ class App
         run = show_menu
         case run
         when '1'
-          list_all_movies
+          list_movies
         when '2'
-          list_all_sources
+          list_sources
         when '3'
           add_movie
         when '4'
