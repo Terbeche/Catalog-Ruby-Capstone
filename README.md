@@ -23,6 +23,11 @@ This is a repo for a catalog console app writing in ruby
 - GitHub: [@githubhandle](https://github.com/NatiDeme)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/natnael-demelash/)
 
+👤 **Safar Ali**
+
+- GitHub: [@githubhandle](https://github.com/safar1212)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/safar-ali999/)
+
 ## Setup
 
 If you wish to run the project locally, please do the following:
