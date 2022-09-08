@@ -2,6 +2,8 @@ require 'json'
 
 module BooksPersistence
   def store_books(books)
+
+    puts "store books"
     data = []
     file = './JSON_files/books.json'
     return unless File.exist?(file)
@@ -14,6 +16,8 @@ module BooksPersistence
   end
 
   def load_books
+    puts "load books"
+
     data = []
     file = './JSON_files/books.json'
     return data unless File.exist?(file) && File.read(file) != ''
