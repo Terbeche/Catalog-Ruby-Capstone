@@ -15,7 +15,7 @@ class App
         @sources = load_sources
     end
 
-    include moviesPersistence
+  include moviesPersistence
   include sourcesPersistence
   include movieModule
   include sourceModule
