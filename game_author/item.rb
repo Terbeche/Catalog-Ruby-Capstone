@@ -12,14 +12,14 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  def author=(author)
-    @author = author
-    author.items.push(self)
-  end
+  # def author=(author)
+  #   @author = author
+  #   author.items.push(self)
+  # end
 
-  private
+  # private
 
-  def can_be_archived?
-    publish_date > 10
-  end
+  # def can_be_archived?
+  #   publish_date > 10
+  # end
 end
