@@ -50,7 +50,7 @@ module BookModule
 
     end
 
-    book = Book.new(rand(1000), publisher, cover_state, publish_date, false, title)
+    book = Book.new(publisher, cover_state, publish_date, false, title, rand(1000))
     book.move_to_archive
     @books << book
     unless label.nil?
