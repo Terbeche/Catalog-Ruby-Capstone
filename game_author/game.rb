@@ -12,6 +12,6 @@ class Game < Item
   end
 
   def can_be_archived?()
-    item.can_be_archived? == true & last_played_at > 2
+    super & last_played_at > 2
   end
 end
